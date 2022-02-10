@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-;
+
 
 char *lire(char *lachaine,int nbMAXcaracAsaisir);
 char *lireChaine(const char *, char * , int );
