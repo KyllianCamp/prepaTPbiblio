@@ -27,14 +27,14 @@ typedef enum {lu,ma,me,je,ve,sa,di} T_Jour ; // lu vaut 0
 typedef enum {janv,fevr,mars,avri,mai,juin,juil,aout,sept,octo,nove,dece} T_Mois;
 
 
-typedef struct
-{
-char nomemprunteur[50];
-T_Jour lejour;
-int ladate;
-T_Mois lemois;
-int lannee
-}T_Emp ;
+// typedef struct
+// {
+// char nomemprunteur[50];
+// T_Jour lejour;
+// int ladate;
+// T_Mois lemois;
+// int lannee;
+// } T_Emp ;
 
 
 
