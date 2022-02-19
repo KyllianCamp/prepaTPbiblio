@@ -58,7 +58,8 @@ switch(chx)
 	case 2 : reponse=afficherBibliotheque(&B);
 			if (reponse==0)	
 					printf("La bibliotheque est vide");
-
+			else
+				
 			break;	
 	
 	
