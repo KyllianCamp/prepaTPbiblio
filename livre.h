@@ -54,7 +54,7 @@ T_Emp emprunteur; // Nom de l'emprunteur et date d'emprunt
 
 
 //prototypes
-void saisirLivre(T_livre * ptrL);void afficherLivre(const T_livre *ptrL);
+void saisirLivre(T_livre * ptrL);
 void afficherLivre(const T_livre *ptrL);
 
 
