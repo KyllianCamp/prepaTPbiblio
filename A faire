@@ -1,0 +1,8 @@
+Document texte pour savoir ce qu'il y a à faire et à terminer :
+
+-Fonction init (biblio.c) :
+    - Comprendre ce qu'il faut faire réellement dans la fonction
+
+-Fonction formaterTexte (biblio.c) :
+    - Faire que la fonction soit utilisable par tout les type (T_Titre, T_aut...),
+    Pour l'instant elle est utilisable uniquement pour les T_Titre.
