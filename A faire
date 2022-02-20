@@ -6,3 +6,13 @@ Document texte pour savoir ce qu'il y a à faire et à terminer :
 -Fonction formaterTexte (biblio.c) :
     - Faire que la fonction soit utilisable par tout les type (T_Titre, T_aut...),
     Pour l'instant elle est utilisable uniquement pour les T_Titre.
+
+-Partie 1 : 
+    biblio.c :
+        Faire la fonction supprimerLivre
+
+    biblio.h :
+        Faire le prototype de la fonction
+
+    tpBiblio.c :
+        Faire l'appel à la fonction dans le case 5
