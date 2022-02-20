@@ -41,7 +41,9 @@ return choix;
 int main()
 {
 int reponse,chx;
-T_Bibliotheque B; 
+T_Bibliotheque B;
+T_Titre titreRecherche;
+T_Aut auteurRecherche;
 init( &B );
 
 do
@@ -57,13 +59,51 @@ switch(chx)
 			break;
 	case 2 : reponse=afficherBibliotheque(&B);
 			if (reponse==0)	
-					printf("La bibliotheque est vide");
+					printf("La bibliotheque est vide \n");
 			else
 				
 			break;	
 	
+	case 3 :
+			if (B.nbLivres != 0)
+			{
+				printf("Saisissez le titre que vous cherchez : ");
+				fgets(titreRecherche, K_MaxTit, stdin);
+				formaterTexte(titreRecherche);
+				reponse = rechercherLivre(&B, titreRecherche);
+				if (reponse == 0)
+				{
+					printf("\nLe livre ne se trouve pas dans la bibliothèque \n");
+				}
+				
+			}
+			else
+			{
+				printf("\nLa bibliothèque est vide \n");
+			}
+			break;
+
+	case 4 :
+			if (B.nbLivres != 0)
+			{
+				printf("Saisissez le nom de l'auteur que vous cherchez : ");
+				fgets(auteurRecherche, K_MaxAut, stdin);
+				reponse = rechercherAuteur(&B, auteurRecherche);
+				if (reponse == 0)
+				{
+					printf("\nAucun livre de cette auteur ne se trouve dans la bibliothèque");
+				}
+				
+			}
+			else
+			{
+				printf("\nLa bibliothèque est vide \n");
+			}
+			break;
 	
-	
+	default :
+			printf("\nVous n'avez pas saisis une valeur correct\n");
+			break;
 	
 	
 	}
