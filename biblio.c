@@ -175,6 +175,7 @@ void formaterTexte(Tchaine recherche)
     }
 }
 
+<<<<<<< HEAD
 int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
 {
     for (int i = 0; i < ptrB->nbLivres; i++)
@@ -187,3 +188,41 @@ int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
     }
     
 }
+=======
+// TP 8 Partie n°2
+
+int rechercherCode(const T_Bibliotheque *ptrB, const T_Code code)
+{
+    int compteur = 0;
+    for (int i = 0; i < ptrB->nbLivres; i++)
+    {     
+        if (strcmp(ptrB->etagere[i].code, code)==0)
+        {
+            compteur++;
+            printf("Ce code de livre se trouve à la place %d dans l'étagère \n", i+1);
+        }  
+    }
+    return compteur;
+}
+
+int emprunterLivre(T_Bibliotheque *ptrB)
+    {
+    T_Code code_tempo;
+    char nom;
+    if (ptrB->nbLivres < CAPACITE_BIBLIO)
+        { 
+            printf("Saisissez le code du livre que vous voulez emprunter:\n");
+            fgets(code_tempo, MAX_CODE, stdin);
+            fflush(stdin);
+            int compteur = rechercherCode(ptrB,code_tempo);
+            printf("Saisissez votre nom de famille:\n");
+            fgets(ptrB->etagere[compteur].titre, MAX_TITRE, stdin);
+            fflush(stdin);
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+>>>>>>> 73c550d4ddfcbd48d92a593c96c0a7a0dadc992d
