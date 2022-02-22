@@ -208,27 +208,44 @@ int rechercherCode(const T_Bibliotheque *ptrB, const T_Code code)
 int emprunterLivre(T_Bibliotheque *ptrB)
 {
     T_Code code_tempo;
+    int choix;
     printf("Saisissez le code du livre que vous voulez emprunter:\n");
     fgets(code_tempo, MAX_CODE, stdin);
     fflush(stdin);
     int compteur = rechercherCode(ptrB,code_tempo);
-    printf("Saisissez votre nom de famille:\n");
-    fgets(ptrB->etagere[compteur].titre, MAX_TITRE, stdin);
-    fflush(stdin);
+    if(compteur<=0)
+    {
+        printf("Saisissez votre nom de famille:\n");
+        fgets(ptrB->etagere[compteur].emprunteur.nomemprunteur, MAX_TITRE, stdin);
+        fflush(stdin);
 
-    int h, min, s, day, mois, an;
-    time_t now;
-            
-    // Renvoie l'heure actuelle
-    time(&now);
-    // Convertir au format heure locale
-    printf("Aujourd'hui est : %s", ctime(&now));
-    struct tm *local = localtime(&now);     
-    day = local->tm_mday;          
-    mois = local->tm_mon + 1;     
-    an = local->tm_year + 1900;  
-    // Afficher la date courante
-    printf("La date : %02d/%02d/%d\n", day, mois, an);
-        
-    return 1;
+        int day, mois, an;
+        time_t now;
+                
+        // Renvoie l'heure actuelle
+        time(&now);
+        // Convertir au format heure locale
+        printf("Aujourd'hui est : %s", ctime(&now));
+        struct tm *local = localtime(&now);     
+        day = local->tm_mday;          
+        mois = local->tm_mon + 1;     
+        an = local->tm_year + 1900;  
+        // Afficher la date courante
+        fprintf(ptrB->etagere[compteur].emprunteur.ladate,"%02d%02d%d", day, mois, an);     
+
+        printf("Quel jour comptez vous rendre le livre(0 lundi ,1 mardi,2 mercredi,3 jeudi,4 vendredi,5 samedi 6 dimanche)\n");
+        scanf("%d",&choix);
+        ptrB->etagere[compteur].emprunteur.lejour=(T_Jour)choix;
+        printf("Quel mois comptez vous rendre le livre(0 janvier;1 février,2 mars,3 avril,4 mai,5 juin,6 juillet,7 août,8 septembre,9 octobre,10 novembre,11 décembre)\n");
+        scanf("%d",&choix);
+        ptrB->etagere[compteur].emprunteur.lemois=(T_Mois)choix;
+        printf("Quel année comptez vous rendre le livre\n");
+        scanf("%d",&choix);
+        ptrB->etagere[compteur].emprunteur.lannee= choix;
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
