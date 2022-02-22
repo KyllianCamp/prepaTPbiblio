@@ -121,7 +121,7 @@ switch(chx)
 	case 6 : 
 			if(B.nbLivres > 0)
 			{
-				
+				emprunterLivre(&B);
 				nombreLivresEmpruntes++;
 			}
 			else

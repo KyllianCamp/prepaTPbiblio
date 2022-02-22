@@ -27,6 +27,7 @@ int rechercherAuteur(const T_Bibliotheque *ptrB, const T_Aut recherche);
 int supprimerLivre(T_Bibliotheque *ptrB, const T_Code recherche);
 int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche);
 void trieTitre(T_Bibliotheque *ptrB);
+int emprunterLivre(T_Bibliotheque *ptrB);
 
 
 void sauvegarde(T_Bibliotheque *ptrB);
