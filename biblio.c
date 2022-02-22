@@ -174,3 +174,16 @@ void formaterTexte(Tchaine recherche)
         i++;
     }
 }
+
+int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
+{
+    for (int i = 0; i < ptrB->nbLivres; i++)
+    {
+        if (strcmp(ptrB->etagere[i].code, recherche)==0)
+        {
+            
+        }
+        
+    }
+    
+}
