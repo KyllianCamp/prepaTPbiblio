@@ -3,11 +3,6 @@
 void init (T_Bibliotheque *ptrB)
 {
     ptrB->nbLivres = 0;
-    for (int i = 0; i < CAPACITE_BIBLIO; i++)
-    {
-        strcpy(ptrB->etagere[i].emprunteur, "");
-    }
-    
 }
 
 
