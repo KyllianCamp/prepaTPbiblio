@@ -267,14 +267,18 @@ int emprunterLivre(T_Bibliotheque *ptrB)
 
 void trieTitre(T_Bibliotheque *ptrB)
 {
-T_Titre intermediaire;
-    for (int i = ptrB->nbLivres; i > 0; i--)
+    T_Titre intermediaire;
+    for (int i = 0; i < ptrB->nbLivres; i++)
     {
-        if (strcmp(ptrB->etagere[i].titre, ptrB->etagere[i-1].titre) < 0)
+        for (int y = (ptrB->nbLivres)-1; y > 0 ; y--)
         {
-            strcpy(intermediaire, ptrB->etagere[i].titre);
-            strcpy(ptrB->etagere[i].titre, ptrB->etagere[i-1].titre);
-            strcpy(ptrB->etagere[i-1].titre, intermediaire);
+            if (strcmp(ptrB->etagere[y].titre, ptrB->etagere[y-1].titre) < 0)
+            {
+                printf("%d", y);
+                strcpy(intermediaire, ptrB->etagere[y].titre);
+                strcpy(ptrB->etagere[y].titre, ptrB->etagere[y-1].titre);
+                strcpy(ptrB->etagere[y-1].titre, intermediaire);
+            }
         }
     }
 }

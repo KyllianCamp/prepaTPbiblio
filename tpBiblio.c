@@ -121,6 +121,10 @@ switch(chx)
 	case 6 : 
 			if(B.nbLivres > 0)
 			{
+<<<<<<< HEAD
+=======
+				emprunterLivre(&B);
+>>>>>>> 942c3b10085f6dbfdd4006311190b5de7ea2ec2c
 				nombreLivresEmpruntes++;
 				emprunterLivre(&B);
 				printf("%s %u %u",B.etagere[1].emprunteur.nomemprunteur,B.etagere[1].emprunteur.lejour,B.etagere[1].emprunteur.lemois);

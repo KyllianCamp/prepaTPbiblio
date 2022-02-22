@@ -28,6 +28,10 @@ int supprimerLivre(T_Bibliotheque *ptrB, const T_Code recherche);
 int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche);
 void trieTitre(T_Bibliotheque *ptrB);
 int emprunterLivre(T_Bibliotheque *ptrB);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 942c3b10085f6dbfdd4006311190b5de7ea2ec2c
 
 void sauvegarde(T_Bibliotheque *ptrB);
 void chargement(T_Bibliotheque *ptrB);
