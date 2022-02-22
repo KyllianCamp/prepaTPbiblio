@@ -213,12 +213,12 @@ int emprunterLivre(T_Bibliotheque *ptrB)
     fgets(code_tempo, MAX_CODE, stdin);
     fflush(stdin);
     int compteur = rechercherCode(ptrB,code_tempo);
-    if(compteur<=0)
+    if(compteur>=0)
     {
         printf("Saisissez votre nom de famille:\n");
         fgets(ptrB->etagere[compteur].emprunteur.nomemprunteur, MAX_TITRE, stdin);
         fflush(stdin);
-
+        
         int day, mois, an;
         time_t now;
                 
@@ -231,21 +231,50 @@ int emprunterLivre(T_Bibliotheque *ptrB)
         mois = local->tm_mon + 1;     
         an = local->tm_year + 1900;  
         // Afficher la date courante
-        fprintf(ptrB->etagere[compteur].emprunteur.ladate,"%02d%02d%d", day, mois, an);     
+        //fprintf(ptrB->etagere[compteur].emprunteur.ladate,"%02d%02d%d", day, mois, an);     
 
         printf("Quel jour comptez vous rendre le livre(0 lundi ,1 mardi,2 mercredi,3 jeudi,4 vendredi,5 samedi 6 dimanche)\n");
-        scanf("%d",&choix);
+        fscanf(stdin,"%d",&choix);
         ptrB->etagere[compteur].emprunteur.lejour=(T_Jour)choix;
         printf("Quel mois comptez vous rendre le livre(0 janvier;1 février,2 mars,3 avril,4 mai,5 juin,6 juillet,7 août,8 septembre,9 octobre,10 novembre,11 décembre)\n");
-        scanf("%d",&choix);
+        fscanf(stdin,"%d",&choix);
         ptrB->etagere[compteur].emprunteur.lemois=(T_Mois)choix;
         printf("Quel année comptez vous rendre le livre\n");
-        scanf("%d",&choix);
+        fscanf(stdin,"%4d",&choix);
         ptrB->etagere[compteur].emprunteur.lannee= choix;
         return 1;
     }
     else
     {
         return 0;
+    }
+    int day, mois, an;
+    time_t now;
+            
+    // Renvoie l'heure actuelle
+    time(&now);
+    // Convertir au format heure locale
+    printf("Aujourd'hui est : %s", ctime(&now));
+    struct tm *local = localtime(&now);     
+    day = local->tm_mday;          
+    mois = local->tm_mon + 1;     
+    an = local->tm_year + 1900;  
+    // Afficher la date courante
+    printf("La date : %02d/%02d/%d\n", day, mois, an);
+        
+    return 1;
+}
+
+void trieTitre(T_Bibliotheque *ptrB)
+{
+T_Titre intermediaire;
+    for (int i = ptrB->nbLivres; i > 0; i--)
+    {
+        if (strcmp(ptrB->etagere[i].titre, ptrB->etagere[i-1].titre) < 0)
+        {
+            strcpy(intermediaire, ptrB->etagere[i].titre);
+            strcpy(ptrB->etagere[i].titre, ptrB->etagere[i-1].titre);
+            strcpy(ptrB->etagere[i-1].titre, intermediaire);
+        }
     }
 }
