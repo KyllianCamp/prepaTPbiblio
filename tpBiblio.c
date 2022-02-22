@@ -125,7 +125,7 @@ switch(chx)
 			}
 			else
 			{
-				rintf("\n La bibliothèque est vide \n");
+				printf("\n La bibliothèque est vide \n");
 			}
 			break;
 
