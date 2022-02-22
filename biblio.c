@@ -102,7 +102,7 @@ int supprimerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
                 ptrB->etagere[y]= ptrB->etagere[y+1];
             }
         ptrB->nbLivres--;
-        return i+1;
+        return i;
         } 
     }
     return -1;
@@ -181,11 +181,11 @@ int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
     {
         if (strcmp(ptrB->etagere[i].code, recherche)==0)
         {
-            strcpy(ptrB->etagere[i].emprunteur.nomemprunteur[0], '\0';
+         return 0 ;  
         }
-        return i+1;
+        
     }
-    return 0
+    
 }
 // TP 8 Partie n°2
 
@@ -214,5 +214,20 @@ int emprunterLivre(T_Bibliotheque *ptrB)
     printf("Saisissez votre nom de famille:\n");
     fgets(ptrB->etagere[compteur].titre, MAX_TITRE, stdin);
     fflush(stdin);
-    return 1;
-    }
+
+    int h, min, s, day, mois, an;
+    time_t now;
+            
+    // Renvoie l'heure actuelle
+    time(&now);
+    // Convertir au format heure locale
+    printf("Aujourd'hui est : %s", ctime(&now));
+    struct tm *local = localtime(&now);     
+    day = local->tm_mday;          
+    mois = local->tm_mon + 1;     
+    an = local->tm_year + 1900;  
+    // Afficher la date courante
+    printf("La date : %02d/%02d/%d\n", day, mois, an);
+        
+    return 1; 
+}
