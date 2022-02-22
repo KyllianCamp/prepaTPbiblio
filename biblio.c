@@ -175,6 +175,20 @@ void formaterTexte(Tchaine recherche)
     }
 }
 
+<<<<<<< HEAD
+int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
+{
+    for (int i = 0; i < ptrB->nbLivres; i++)
+    {
+        if (strcmp(ptrB->etagere[i].code, recherche)==0)
+        {
+            
+        }
+        
+    }
+    
+}
+=======
 // TP 8 Partie n°2
 
 int rechercherCode(const T_Bibliotheque *ptrB, const T_Code code)
@@ -204,3 +218,4 @@ int emprunterLivre(T_Bibliotheque *ptrB)
     fflush(stdin);
     return 1;
     }
+>>>>>>> 73c550d4ddfcbd48d92a593c96c0a7a0dadc992d
