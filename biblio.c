@@ -106,6 +106,7 @@ int supprimerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
             {
                 ptrB->etagere[y]= ptrB->etagere[y+1];
             }
+        ptrB->nbLivres--;
         return i;
         } 
     }
