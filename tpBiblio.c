@@ -38,7 +38,7 @@ T_Bibliotheque B;
 T_Titre titreRecherche;
 T_Aut auteurRecherche;
 T_Code codeRecherche;
-int nombreLivresEmpruntes
+int nombreLivresEmpruntes = 0;
 init( &B );
 // chargement(&B);
 do
@@ -121,7 +121,11 @@ switch(chx)
 	case 6 : 
 			if(B.nbLivres > 0)
 			{
-
+				nombreLivresEmpruntes++;
+			}
+			else
+			{
+				rintf("\n La bibliothèque est vide \n");
 			}
 			break;
 
@@ -130,6 +134,7 @@ switch(chx)
 			{
 				printf("Saisissez le livre que vous rendez \n");
 				fgets(codeRecherche, )
+				nombreLivresEmpruntes--;
 			}
 			else 
 			{
