@@ -87,6 +87,7 @@ switch(chx)
 			{
 				printf("Saisissez le nom de l'auteur que vous cherchez : ");
 				fgets(auteurRecherche, K_MaxAut, stdin);
+				formaterTexte(auteurRecherche);
 				reponse = rechercherAuteur(&B, auteurRecherche);
 				if (reponse == 0)
 				{
