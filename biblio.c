@@ -23,7 +23,7 @@ int ajouterLivre(T_Bibliotheque  *ptrB)
         printf("Saisissez l'auteur du livre : \n");
         fgets(ptrB->etagere[ptrB->nbLivres].auteur, MAX, stdin);
         fflush(stdin);
-        // formaterTexte(ptrB->etagere[ptrB->nbLivres].auteur);
+        formaterTexte(ptrB->etagere[ptrB->nbLivres].auteur);
 
         printf("Saisissez le code du livre : \n");
         fgets(ptrB->etagere[ptrB->nbLivres].code, MAX_CODE, stdin);
@@ -36,7 +36,7 @@ int ajouterLivre(T_Bibliotheque  *ptrB)
         printf("Saisissez l'éditeur du livre : \n");
         fgets(ptrB->etagere[ptrB->nbLivres].editeur, MAX, stdin);
         fflush(stdin);
-        // formaterTexte(ptrB->etagere[ptrB->nbLivres].editeur);
+        formaterTexte(ptrB->etagere[ptrB->nbLivres].editeur);
 
         ptrB->nbLivres++;
         return 1;
@@ -163,7 +163,7 @@ void chargement(T_Bibliotheque *ptrB)
 //Entrée : texte à formater
 //Sortie : 1 lettre en majuscule et le reste en minuscule
 //Utilité : Permet ici d'enlever les majuscules en milieu de mot qui peut gener si on cherche le livre
-void formaterTexte(T_Titre recherche)
+void formaterTexte(Tchaine recherche)
 {
     int i = 1;
     if (recherche[0]>= 'a' && recherche[0]<='z')
