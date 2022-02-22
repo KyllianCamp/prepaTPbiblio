@@ -216,7 +216,7 @@ int emprunterLivre(T_Bibliotheque *ptrB)
     fgets(ptrB->etagere[compteur].titre, MAX_TITRE, stdin);
     fflush(stdin);
 
-    int h, min, s, day, mois, an;
+    int day, mois, an;
     time_t now;
             
     // Renvoie l'heure actuelle
@@ -241,7 +241,7 @@ T_Titre intermediaire;
         if (strcmp(ptrB->etagere[i].titre, ptrB->etagere[i-1].titre) < 0)
         {
             strcpy(intermediaire, ptrB->etagere[i].titre);
-            strcpy(ptrB->etagere[i].titre, ptrB->etagere[i-1].titre;);
+            strcpy(ptrB->etagere[i].titre, ptrB->etagere[i-1].titre);
             strcpy(ptrB->etagere[i-1].titre, intermediaire);
         }
     }
