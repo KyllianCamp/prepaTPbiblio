@@ -96,11 +96,26 @@ int rechercherAuteur(const T_Bibliotheque *ptrB, const T_Aut recherche)
     return compteur;
 }
 
+int supprimerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
+{
+    for (int i = 0; i < ptrB->nbLivres; i++)
+    {
+        if (strcmp(ptrB->etagere[i].code, recherche)==0)
+        {
+            for (int y = i; y < ptrB->nbLivres; y++)
+            {
+                ptrB->etagere[y]= ptrB->etagere[y+1];
+            }
+        return i;
+        } 
+    }
+    return -1;
+}
+
 //Fonction formaterTexte
 //Entrée : texte à formater
 //Sortie : 1 lettre en majuscule et le reste en minuscule
 //Utilité : Permet ici d'enlever les majuscules en milieu de mot qui peut gener si on cherche le livre
-
 void formaterTexte(T_Titre recherche)
 {
     int i = 1;
