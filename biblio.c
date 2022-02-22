@@ -33,6 +33,8 @@ int ajouterLivre(T_Bibliotheque  *ptrB)
         fflush(stdin);
         formaterTexte(ptrB->etagere[ptrB->nbLivres].editeur);
 
+        ptrB->etagere[ptrB->nbLivres].emprunteur.nomemprunteur[0]= '\0';
+
         ptrB->nbLivres++;
         return 1;
     }
@@ -297,4 +299,44 @@ void trieAuteur(T_Bibliotheque *ptrB)
             }
         }
     }
+}
+
+void trieAnnee(T_Bibliotheque *ptrB)
+{
+    T_livre intermediaire;
+    for (int i = 0; i < ptrB->nbLivres; i++)
+    {
+        for (int y = (ptrB->nbLivres)-1; y > 0 ; y--)
+        {
+            if (ptrB->etagere[y].annee < ptrB->etagere[y-1].annee)
+            {
+                intermediaire = ptrB->etagere[y];
+                ptrB->etagere[y]=ptrB->etagere[y-1];
+                ptrB->etagere[y-1]=intermediaire;
+            }
+        } 
+    }
+}
+
+void listeLivreDispo(const T_Bibliotheque *ptrB)
+{
+    int compteur = 0;
+    for (int i = 0; i < ptrB->nbLivres ; i++)
+    {
+        if (ptrB->etagere[i].emprunteur.nomemprunteur[0]=='\0')
+        {
+            compteur++;
+            if (compteur == 1)
+            {
+                printf("Les livres disponibles sont : \n\n");
+            }
+            afficherLivre(&ptrB->etagere[i]);
+            printf("\n");
+        }
+    }
+    if (compteur == 0)
+    {
+        printf("Aucun livre n'est disponible pour l'instant \n");
+    }
+    
 }

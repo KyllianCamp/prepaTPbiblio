@@ -29,6 +29,8 @@ int emprunterLivre(T_Bibliotheque *ptrB);
 int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche);
 void trieTitre(T_Bibliotheque *ptrB);
 void trieAuteur(T_Bibliotheque *ptrB);
+void trieAnnee(T_Bibliotheque *ptrB);
+void listeLivreDispo(const T_Bibliotheque *ptrB);
 
 void sauvegarde(T_Bibliotheque *ptrB);
 void chargement(T_Bibliotheque *ptrB);
