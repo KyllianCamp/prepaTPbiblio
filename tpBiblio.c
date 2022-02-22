@@ -61,8 +61,6 @@ switch(chx)
 	case 2 : reponse=afficherBibliotheque(&B);
 			if (reponse==0)	
 					printf("La bibliotheque est vide \n");
-			else
-				
 			break;	
 	
 	case 3 :
@@ -105,13 +103,13 @@ switch(chx)
 	case 5 :
 			if (B.nbLivres > 0)
 			{
-				printf("Saisissez le code du livre que vous souhaitez supprimer");
+				printf("Saisissez le code du livre que vous souhaitez supprimer : \n");
 				fgets(codeRecherche, K_MaxCode, stdin);
 				reponse = supprimerLivre(&B, codeRecherche);
 				if (reponse >= 0)
 				{
-					printf("\nLe livre se trouvait à la position %d", reponse);
-					printf("\nSupression avec succès");
+					printf("Le livre se trouvait à la position %d \n", reponse);
+					printf("Supression avec succès \n");
 				}
 				else
 				{
