@@ -207,19 +207,12 @@ int emprunterLivre(T_Bibliotheque *ptrB)
     {
     T_Code code_tempo;
     char nom;
-    if (ptrB->nbLivres < CAPACITE_BIBLIO)
-        { 
-            printf("Saisissez le code du livre que vous voulez emprunter:\n");
-            fgets(code_tempo, MAX_CODE, stdin);
-            fflush(stdin);
-            int compteur = rechercherCode(ptrB,code_tempo);
-            printf("Saisissez votre nom de famille:\n");
-            fgets(ptrB->etagere[compteur].titre, MAX_TITRE, stdin);
-            fflush(stdin);
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
+    printf("Saisissez le code du livre que vous voulez emprunter:\n");
+    fgets(code_tempo, MAX_CODE, stdin);
+    fflush(stdin);
+    int compteur = rechercherCode(ptrB,code_tempo);
+    printf("Saisissez votre nom de famille:\n");
+    fgets(ptrB->etagere[compteur].titre, MAX_TITRE, stdin);
+    fflush(stdin);
+    return 1;
     }
