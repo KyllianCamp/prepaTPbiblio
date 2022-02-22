@@ -133,7 +133,8 @@ switch(chx)
 			if (nombreLivresEmpruntes > 0 )
 			{
 				printf("Saisissez le livre que vous rendez \n");
-				fgets(codeRecherche, )
+				fgets(codeRecherche, K_MaxCode, stdin);
+				
 				nombreLivresEmpruntes--;
 			}
 			else 
