@@ -25,13 +25,10 @@ int afficherBibliotheque(const T_Bibliotheque  *ptrB);
 int rechercherLivre(const T_Bibliotheque *ptrB, const T_Titre recherche);
 int rechercherAuteur(const T_Bibliotheque *ptrB, const T_Aut recherche);
 int supprimerLivre(T_Bibliotheque *ptrB, const T_Code recherche);
+int emprunterLivre(T_Bibliotheque *ptrB);
 int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche);
 void trieTitre(T_Bibliotheque *ptrB);
-int emprunterLivre(T_Bibliotheque *ptrB);
-<<<<<<< HEAD
-=======
-
->>>>>>> 942c3b10085f6dbfdd4006311190b5de7ea2ec2c
+void trieAuteur(T_Bibliotheque *ptrB);
 
 void sauvegarde(T_Bibliotheque *ptrB);
 void chargement(T_Bibliotheque *ptrB);

@@ -121,10 +121,7 @@ switch(chx)
 	case 6 : 
 			if(B.nbLivres > 0)
 			{
-<<<<<<< HEAD
-=======
 				emprunterLivre(&B);
->>>>>>> 942c3b10085f6dbfdd4006311190b5de7ea2ec2c
 				nombreLivresEmpruntes++;
 				emprunterLivre(&B);
 				printf("%s %u %u",B.etagere[1].emprunteur.nomemprunteur,B.etagere[1].emprunteur.lejour,B.etagere[1].emprunteur.lemois);
@@ -170,10 +167,21 @@ switch(chx)
 			}
 			break;
 
+	case 9 :
+			if (B.nbLivres > 0)
+			{
+				trieAuteur(&B);
+				printf("Bibliothèque trié avec succès \n");
+			}
+			else
+			{
+				printf("La bibliothèque est vide \n");
+			}
+			break;
+
 	default :
 			printf("\nVous n'avez pas saisis une valeur correct\n");
 			break;
-	
 	
 	}
 
