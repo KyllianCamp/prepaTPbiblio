@@ -15,7 +15,6 @@ printf("\n 7 - restituer/rendre un livre de la bibliotheque");
 printf("\n 8 - trier les livres (par titre)");
 printf("\n 9 - trier les livres (par auteur)");
 printf("\n 10 - trier les livres (par annee)");
-*/
 // si les 5 choix (6-10) sont bien codés, changez le type T_Emp et remplacez-le par la structure T_Emp visible dans livre.h
 // vous pourrez alors faire les menus 11,12,etc...
 // printf("\n 11- lister les livres disponibles "); 
@@ -39,6 +38,7 @@ T_Bibliotheque B;
 T_Titre titreRecherche;
 T_Aut auteurRecherche;
 T_Code codeRecherche;
+int nombreLivresEmpruntes
 init( &B );
 // chargement(&B);
 do
@@ -117,6 +117,25 @@ switch(chx)
 				printf("\n La bibliothèque est vide \n");
 			}
 			break;
+
+	case 6 : 
+			if(B.nbLivres > 0)
+			{
+
+			}
+			break;
+
+	case 7 :
+			if (nombreLivresEmpruntes > 0 )
+			{
+				printf("Saisissez le livre que vous rendez \n");
+				fgets(codeRecherche, )
+			}
+			else 
+			{
+				printf("Aucun livre n'a été empruntés \n")
+			}
+			
 
 	default :
 			printf("\nVous n'avez pas saisis une valeur correct\n");
