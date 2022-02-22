@@ -182,10 +182,12 @@ int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
         if (strcmp(ptrB->etagere[i].code, recherche)==0)
         {
          return 0 ;  
+            strcpy(ptrB->etagere[i].emprunteur.nomemprunteur, NULL);
         }
         
     }
     
+    return 0;
 }
 // TP 8 Partie n°2
 
@@ -204,9 +206,8 @@ int rechercherCode(const T_Bibliotheque *ptrB, const T_Code code)
 }
 
 int emprunterLivre(T_Bibliotheque *ptrB)
-    {
+{
     T_Code code_tempo;
-    char nom;
     printf("Saisissez le code du livre que vous voulez emprunter:\n");
     fgets(code_tempo, MAX_CODE, stdin);
     fflush(stdin);
@@ -229,5 +230,5 @@ int emprunterLivre(T_Bibliotheque *ptrB)
     // Afficher la date courante
     printf("La date : %02d/%02d/%d\n", day, mois, an);
         
-    return 1; 
+    return 1;
 }
