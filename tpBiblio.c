@@ -46,7 +46,7 @@ T_Titre titreRecherche;
 T_Aut auteurRecherche;
 T_Code codeRecherche;
 init( &B );
-
+chargement(&B);
 do
 {
 chx= menu();
@@ -133,7 +133,7 @@ switch(chx)
 }while(chx!=0);
 
 
-
+sauvegarde(&B);
 
 
 
