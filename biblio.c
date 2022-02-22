@@ -56,7 +56,7 @@ int  afficherBibliotheque(const T_Bibliotheque  *ptrB)
         printf("Les livres disponibles sont : \n");
         for (int i = 0; i < ptrB->nbLivres; i++)
         {
-            printf("-%s \n", ptrB->etagere[i].titre);
+            afficherLivre(&ptrB->etagere[i]);
         }
         return 1;
     }
