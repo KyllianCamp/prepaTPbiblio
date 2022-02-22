@@ -44,6 +44,7 @@ int reponse,chx;
 T_Bibliotheque B;
 T_Titre titreRecherche;
 T_Aut auteurRecherche;
+T_Code codeRecherche;
 init( &B );
 
 do
@@ -100,7 +101,30 @@ switch(chx)
 				printf("\nLa bibliothèque est vide \n");
 			}
 			break;
-	
+
+	case 5 :
+			if (B.nbLivres > 0)
+			{
+				printf("Saisissez le code du livre que vous souhaitez supprimer");
+				fgets(codeRecherche, K_MaxCode, stdin);
+				reponse = supprimerLivre(&B, codeRecherche);
+				if (reponse >= 0)
+				{
+					printf("\nLe livre se trouvait à la position %d", reponse);
+					printf("\nSupression avec succès");
+				}
+				else
+				{
+					printf("\nCe livre ne se trouve pas dans la bibliothèque\n");
+				}
+				
+			}
+			else
+			{
+				printf("\n La bibliothèque est vide \n");
+			}
+			break;
+
 	default :
 			printf("\nVous n'avez pas saisis une valeur correct\n");
 			break;
