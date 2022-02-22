@@ -50,13 +50,14 @@ T_Titre titre; // Titre du livre
 T_Aut auteur; // Nom de l'auteur
 T_Edit editeur; // Nom de l'editeur
 T_annee annee; // Annee de l'edition
-// T_Emp emprunteur; // Nom de l'emprunteur et date d'emprunt
+T_Emp emprunteur; // Nom de l'emprunteur et date d'emprunt
 }  T_livre;
 
 
 //prototypes
 void saisirLivre(T_livre * ptrL);
 void afficherLivre(const T_livre *ptrL);
+int heure();
 
 
 #endif //fin de compilation conditionnelle
