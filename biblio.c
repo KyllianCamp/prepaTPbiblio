@@ -232,3 +232,17 @@ int emprunterLivre(T_Bibliotheque *ptrB)
         
     return 1;
 }
+
+void trieTitre(T_Bibliotheque *ptrB)
+{
+T_Titre intermediaire;
+    for (int i = ptrB->nbLivres; i > 0; i--)
+    {
+        if (strcmp(ptrB->etagere[i].titre, ptrB->etagere[i-1].titre) < 0)
+        {
+            strcpy(intermediaire, ptrB->etagere[i].titre);
+            strcpy(ptrB->etagere[i].titre, ptrB->etagere[i-1].titre;);
+            strcpy(ptrB->etagere[i-1].titre, intermediaire);
+        }
+    }
+}

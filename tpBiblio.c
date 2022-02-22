@@ -121,6 +121,7 @@ switch(chx)
 	case 6 : 
 			if(B.nbLivres > 0)
 			{
+				
 				nombreLivresEmpruntes++;
 			}
 			else
@@ -139,13 +140,28 @@ switch(chx)
 				{
 					printf("Le livre a été restituer à la place %d \n", reponse);
 					printf("Restitution avec succès\n");
+					nombreLivresEmpruntes--;
 				}
-				nombreLivresEmpruntes--;
+				else
+				{
+					printf("Le livre ne se trouve pas dans la bibliothèque\n");
+				}
 			}
 			else 
 			{
 				printf("Aucun livre n'a été empruntés \n");
+			}
+			break;
 
+	case 8 : 
+			if (B.nbLivres > 0)
+			{
+				trieTitre(&B);
+				printf("Bibliothèque trié avec succès \n");
+			}
+			else
+			{
+				printf("La bibliothèque est vide \n");
 			}
 			break;
 
