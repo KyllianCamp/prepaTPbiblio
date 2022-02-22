@@ -134,7 +134,12 @@ switch(chx)
 			{
 				printf("Saisissez le livre que vous rendez \n");
 				fgets(codeRecherche, K_MaxCode, stdin);
-				
+				reponse = restituerLivre(&B, codeRecherche);
+				if (reponse > 0)
+				{
+					printf("Le livre a été restituer à la place %d \n", reponse);
+					printf("Restitution avec succès\n");
+				}
 				nombreLivresEmpruntes--;
 			}
 			else 
@@ -142,7 +147,7 @@ switch(chx)
 				printf("Aucun livre n'a été empruntés \n");
 
 			}
-			
+			break;
 
 	default :
 			printf("\nVous n'avez pas saisis une valeur correct\n");

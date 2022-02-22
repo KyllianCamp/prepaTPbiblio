@@ -25,6 +25,7 @@ int afficherBibliotheque(const T_Bibliotheque  *ptrB);
 int rechercherLivre(const T_Bibliotheque *ptrB, const T_Titre recherche);
 int rechercherAuteur(const T_Bibliotheque *ptrB, const T_Aut recherche);
 int supprimerLivre(T_Bibliotheque *ptrB, const T_Code recherche);
+int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche);
 
 void sauvegarde(T_Bibliotheque *ptrB);
 void chargement(T_Bibliotheque *ptrB);
