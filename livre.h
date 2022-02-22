@@ -28,14 +28,14 @@ typedef enum {lu,ma,me,je,ve,sa,di} T_Jour ; // lu vaut 0
 typedef enum {janv,fevr,mars,avri,mai,juin,juil,aout,sept,octo,nove,dece} T_Mois;
 
 
-typedef struct
-{
-char nomemprunteur[50];
-T_Jour lejour;
-int ladate;
-T_Mois lemois;
-int lannee;
-} T_Emp ;
+// typedef struct
+// {
+// char nomemprunteur[50];
+// T_Jour lejour;
+// int ladate;
+// T_Mois lemois;
+// int lannee;
+// } T_Emp ;
 
 
 
@@ -50,7 +50,7 @@ T_Titre titre; // Titre du livre
 T_Aut auteur; // Nom de l'auteur
 T_Edit editeur; // Nom de l'editeur
 T_annee annee; // Annee de l'edition
-T_Emp emprunteur; // Nom de l'emprunteur et date d'emprunt
+// T_Emp emprunteur; // Nom de l'emprunteur et date d'emprunt
 }  T_livre;
 
 

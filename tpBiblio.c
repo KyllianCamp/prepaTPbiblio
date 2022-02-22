@@ -46,7 +46,7 @@ T_Titre titreRecherche;
 T_Aut auteurRecherche;
 T_Code codeRecherche;
 init( &B );
-chargement(&B);
+// chargement(&B);
 do
 {
 chx= menu();

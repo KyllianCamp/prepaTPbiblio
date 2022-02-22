@@ -10,13 +10,12 @@ lireChaine("AUTEUR :", (ptrL->auteur ), MAX);
 void afficherLivre(const T_livre *ptrL)
 {
 afficherChaine("TITRE :", (ptrL->titre));
-printf(" - ");
-afficherChaine("AUTEUR :", (ptrL->auteur ));
-printf("\n");
+afficherChaine("AUTEUR :", (ptrL->auteur));
 afficherChaine("CODE :", (ptrL->code));
-printf(" - ");
-afficherChaine("ANNEE :", (ptrL->annee ));
-printf("\t");
+printf("\n");
+printf("ANNEE : %d",ptrL->annee);
+printf("\n");
 afficherChaine("EDITEUR :", (ptrL->editeur));
+printf("\n");
 }
 
