@@ -183,87 +183,48 @@ int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
     {
         if (strcmp(ptrB->etagere[i].code, recherche)==0)
         {
-         return 0 ;  
-            strcpy(ptrB->etagere[i].emprunteur.nomemprunteur, NULL);
+            ptrB->etagere[i].emprunteur.nomemprunteur[0]= '\0';
+            return i;
         }
-        
     }
-    
-    return 0;
+    return -1;
 }
 // TP 8 Partie n°2
 
 int rechercherCode(const T_Bibliotheque *ptrB, const T_Code code)
 {
-    int compteur = 0;
-    for (int i = 0; i < ptrB->nbLivres; i++)
-    {     
-        if (strcmp(ptrB->etagere[i].code, code)==0)
-        {
-            compteur++;
-            printf("Ce code de livre se trouve à la place %d dans l'étagère \n", i+1);
-        }  
+    int i = 0;
+    while (strcmp(ptrB->etagere[i].code, code)!=0 && i < ptrB->nbLivres)
+    {
+        i++;
     }
-    return compteur;
+    if (strcmp(ptrB->etagere[i].code,code)==0)
+    {
+        return i;
+    }
+return -1;
 }
 
-int emprunterLivre(T_Bibliotheque *ptrB)
+int emprunterLivre(T_Bibliotheque *ptrB, char NomEmprunteur[], int position)
 {
-    T_Code code_tempo;
-    int choix;
-    printf("Saisissez le code du livre que vous voulez emprunter:\n");
-    fgets(code_tempo, MAX_CODE, stdin);
-    fflush(stdin);
-    int compteur = rechercherCode(ptrB,code_tempo);
-    if(compteur>=0)
-    {
-        printf("Saisissez votre nom de famille:\n");
-        fgets(ptrB->etagere[compteur].emprunteur.nomemprunteur, MAX_TITRE, stdin);
-        fflush(stdin);
-        
-        int day, mois, an;
-        time_t now;
-                
-        // Renvoie l'heure actuelle
-        time(&now);
-        // Convertir au format heure locale
-        printf("Aujourd'hui est : %s", ctime(&now));
-        struct tm *local = localtime(&now);     
-        day = local->tm_mday;          
-        mois = local->tm_mon + 1;     
-        an = local->tm_year + 1900;  
-        // Afficher la date courante
-        //fprintf(ptrB->etagere[compteur].emprunteur.ladate,"%02d%02d%d", day, mois, an);     
 
-        printf("Quel jour comptez vous rendre le livre(0 lundi ,1 mardi,2 mercredi,3 jeudi,4 vendredi,5 samedi 6 dimanche)\n");
-        fscanf(stdin,"%d",&choix);
-        ptrB->etagere[compteur].emprunteur.lejour=(T_Jour)choix;
-        printf("Quel mois comptez vous rendre le livre(0 janvier;1 février,2 mars,3 avril,4 mai,5 juin,6 juillet,7 août,8 septembre,9 octobre,10 novembre,11 décembre)\n");
-        fscanf(stdin,"%d",&choix);
-        ptrB->etagere[compteur].emprunteur.lemois=(T_Mois)choix;
-        printf("Quel année comptez vous rendre le livre\n");
-        fscanf(stdin,"%4d",&choix);
-        ptrB->etagere[compteur].emprunteur.lannee= choix;
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-    int day, mois, an;
-    time_t now;
-            
-    // Renvoie l'heure actuelle
-    time(&now);
-    // Convertir au format heure locale
-    printf("Aujourd'hui est : %s", ctime(&now));
-    struct tm *local = localtime(&now);     
-    day = local->tm_mday;          
-    mois = local->tm_mon + 1;     
-    an = local->tm_year + 1900;  
-    // Afficher la date courante
-    printf("La date : %02d/%02d/%d\n", day, mois, an);
-        
+    strcpy(ptrB->etagere[position].emprunteur.nomemprunteur, NomEmprunteur);
+
+    time_t tomorrow;     
+    //Renvoie l'heure actuelle
+    time(&tomorrow);
+
+    struct tm *local = localtime(&tomorrow);
+
+    ptrB->etagere[position].emprunteur.lejour = local->tm_mday;
+    ptrB->etagere[position].emprunteur.lemois = local->tm_mon +1;
+    ptrB->etagere[position].emprunteur.lannee = local->tm_year + 1900;
+    ptrB->etagere[position].emprunteur.ladate = local->tm_yday;
+
+    printf("Vous avez emprunté le livre le: %02d/%02d/%d\n",ptrB->etagere[position].emprunteur.lejour,ptrB->etagere[position].emprunteur.lemois, 
+    ptrB->etagere[position].emprunteur.lannee);
+    printf("Le jour est : %d \n", ptrB->etagere[position].emprunteur.ladate);
+    
     return 1;
 }
 

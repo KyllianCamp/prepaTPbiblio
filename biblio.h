@@ -25,12 +25,14 @@ int afficherBibliotheque(const T_Bibliotheque  *ptrB);
 int rechercherLivre(const T_Bibliotheque *ptrB, const T_Titre recherche);
 int rechercherAuteur(const T_Bibliotheque *ptrB, const T_Aut recherche);
 int supprimerLivre(T_Bibliotheque *ptrB, const T_Code recherche);
-int emprunterLivre(T_Bibliotheque *ptrB);
+int emprunterLivre(T_Bibliotheque *ptrB, char NomEmprunteur[], int position);
 int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche);
 void trieTitre(T_Bibliotheque *ptrB);
 void trieAuteur(T_Bibliotheque *ptrB);
 void trieAnnee(T_Bibliotheque *ptrB);
 void listeLivreDispo(const T_Bibliotheque *ptrB);
+int rechercherCode(const T_Bibliotheque *ptrB, const T_Code code);
+
 
 void sauvegarde(T_Bibliotheque *ptrB);
 void chargement(T_Bibliotheque *ptrB);

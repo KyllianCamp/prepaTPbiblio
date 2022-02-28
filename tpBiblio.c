@@ -1,6 +1,8 @@
 // TP GESTION D'UNE BIBLIOTHEQUE 
 #include "biblio.h"
 
+#define _DEBUG_
+
 int menu()
 {
 	int choix;
@@ -16,8 +18,10 @@ printf("\n 8 - trier les livres (par titre)");
 printf("\n 9 - trier les livres (par auteur)");
 printf("\n 10 - trier les livres (par annee)");
 printf("\n 11 - lister les livres disponibles ");
-// printf("\n 12 - lister les emprunts en retard "); //on suppose qu'un emprunt dure 7 jours.
-// printf("\n 13 - ... imaginez vous même vos propres fonctionnalités ")
+printf("\n 12 - lister les emprunts en retard "); //on suppose qu'un emprunt dure 7 jours.
+printf("\n 13 - lister les emprunts de la personne "); 
+printf("\n 14 - lister les derniers emprunts");
+printf("\n 15 - lister le dernier emprunt d'un livre en particulier");
 
 printf("\n 0 - QUITTER");
 printf("\n Votre choix : ");
@@ -37,8 +41,13 @@ T_Titre titreRecherche;
 T_Aut auteurRecherche;
 T_Code codeRecherche;
 int nombreLivresEmpruntes = 0;
+char nomEmprunteur[50];
 init( &B );
-// chargement(&B);
+
+#ifndef _DEBUG_
+	chargement(&B);
+#endif
+
 do
 {
 chx= menu();
@@ -119,10 +128,27 @@ switch(chx)
 	case 6 : 
 			if(B.nbLivres > 0)
 			{
-				emprunterLivre(&B);
-				nombreLivresEmpruntes++;
-				emprunterLivre(&B);
-				printf("%s %u %u",B.etagere[1].emprunteur.nomemprunteur,B.etagere[1].emprunteur.lejour,B.etagere[1].emprunteur.lemois);
+				printf("Saisissez le code du livre que vous voulez emprunter:\n");
+				fgets(codeRecherche, MAX_CODE, stdin);
+				fflush(stdin);
+				reponse = rechercherCode(&B,codeRecherche);
+				if (reponse >= 0)
+				{
+					printf("Saisissez votre nom \n");
+					fgets(nomEmprunteur, 50, stdin);
+					fflush(stdin);
+					emprunterLivre(&B, nomEmprunteur, reponse);
+					nombreLivresEmpruntes++;
+				}
+				else
+				{
+					printf("Ce livre ne se trouve pas dans la bibliothèque \n");
+				}
+				
+				// emprunterLivre(&B);
+				// nombreLivresEmpruntes++;
+				// emprunterLivre(&B);
+				// printf("%s %u %u",B.etagere[1].emprunteur.nomemprunteur,B.etagere[1].emprunteur.lejour,B.etagere[1].emprunteur.lemois);
 			}
 			else
 			{
@@ -136,9 +162,9 @@ switch(chx)
 				printf("Saisissez le livre que vous rendez \n");
 				fgets(codeRecherche, K_MaxCode, stdin);
 				reponse = restituerLivre(&B, codeRecherche);
-				if (reponse > 0)
+				if (reponse >= 0)
 				{
-					printf("Le livre a été restituer à la place %d \n", reponse);
+					printf("Le livre a été restituer à la place %d \n", reponse+1);
 					printf("Restitution avec succès\n");
 					nombreLivresEmpruntes--;
 				}
@@ -149,7 +175,7 @@ switch(chx)
 			}
 			else 
 			{
-				printf("Aucun livre n'a été empruntés \n");
+				printf("Aucun livre n'a été emprunté \n");
 			}
 			break;
 
@@ -200,6 +226,22 @@ switch(chx)
 			}
 			break;
 
+	case 13 :
+			if (nombreLivresEmpruntes > 0)
+			{
+				printf("Saisissez le nom recherché : \n");
+				fgets(nomEmprunteur, 50, stdin);
+				fflush(stdin);
+
+			}
+			else
+			{
+				printf("Aucun livre n'as été emprunté ")
+			}
+
+	case 0 :
+			break;
+
 	default :
 			printf("\nVous n'avez pas saisis une valeur correct\n");
 			break;
@@ -208,10 +250,9 @@ switch(chx)
 
 }while(chx!=0);
 
-
-sauvegarde(&B);
-
-
+#ifndef _DEBUG_
+	sauvegarde(&B);
+#endif
 
 return 0;
 

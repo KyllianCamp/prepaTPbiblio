@@ -31,7 +31,7 @@ typedef struct
 {
 char nomemprunteur[50];
 T_Jour lejour;
-int ladate;
+int ladate; 
 T_Mois lemois;
 int lannee;
 } T_Emp ;
