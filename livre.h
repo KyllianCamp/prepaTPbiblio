@@ -50,6 +50,8 @@ T_Aut auteur; // Nom de l'auteur
 T_Edit editeur; // Nom de l'editeur
 T_annee annee; // Annee de l'edition
 T_Emp emprunteur; // Nom de l'emprunteur et date d'emprunt
+int NbEmprunt;
+int QuantiteExemplaire;
 }  T_livre;
 
 

@@ -1,9 +1,11 @@
 Document texte pour savoir ce qu'il y a à faire et à terminer :
 
--Fonction formaterTexte (biblio.c) :
-    - Faire que la fonction soit utilisable par tout les type (T_Titre, T_aut...),
-    Pour l'instant elle est utilisable uniquement pour les T_Titre.
 
 -Partie 1 : 
     Fonction chargement et sauvegarde
- 
+
+Corriger :
+    7 - Pouvoir empreter plusieur fois le meme livre par différente personne.
+
+A faire :
+    16 - Livre les plus populaire (en fonction de leur nombre d'emprunts)

@@ -15,5 +15,6 @@ afficherChaine("CODE :", (ptrL->code));
 printf("ANNEE : %d",ptrL->annee);
 printf("\n");
 afficherChaine("EDITEUR :", (ptrL->editeur));
-printf("\n");
+printf("QUANTITY : %d", ptrL->QuantiteExemplaire);
+printf("\n\n");
 }

@@ -12,6 +12,7 @@ typedef struct
 {
 	T_tabloDeLivres etagere;
 	int nbLivres;  //nb de livres actuellement ds la bibliotheque
+	int nbLivresDispo; //nb de livres disponible à l'emprunt
 
 } T_Bibliotheque;
 
@@ -32,10 +33,14 @@ void trieAuteur(T_Bibliotheque *ptrB);
 void trieAnnee(T_Bibliotheque *ptrB);
 void listeLivreDispo(const T_Bibliotheque *ptrB);
 int rechercherCode(const T_Bibliotheque *ptrB, const T_Code code);
+void listeEmpruntPers (const T_Bibliotheque *ptrB, char emprunteur[]);
+void ListeLivreRetard(const T_Bibliotheque *ptrB);
+void dernierLivreEmprunt(const T_Bibliotheque *ptrB);
+void dernierEmprunt (const T_Bibliotheque *ptrB, int reponse);
 
 
 void sauvegarde(T_Bibliotheque *ptrB);
 void chargement(T_Bibliotheque *ptrB);
 
-void formaterTexte(T_Titre recherche);
+void formaterTexte(Tchaine recherche);
 #endif
