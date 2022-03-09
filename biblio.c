@@ -269,6 +269,10 @@ void trieAnnee(T_Bibliotheque *ptrB)
 
 
 // 11 - lister les livres disponibles
+// Nom fonction : listeLivreDispo
+// Description : Lister les livres disponible actuellement dans la bibliothèque
+// Entrée : pointeur vers une bibliothèque
+// Sortie : 
 void listeLivreDispo(const T_Bibliotheque *ptrB)
 {
     int compteur = 0;
@@ -291,6 +295,11 @@ void listeLivreDispo(const T_Bibliotheque *ptrB)
     }
 }
 
+// 12 - Lister les emprunts en retard
+// Nom fonction : ListeLivreRetard
+// Description : Lister les livres qui sont en retard de restitution (temps d'emprunt dépasse 7 jours)
+// Entrée : pointeur vers une bibliothèque
+// Sortie :
 void ListeLivreRetard(const T_Bibliotheque *ptrB)
 {
      time_t today;     
@@ -324,6 +333,10 @@ void ListeLivreRetard(const T_Bibliotheque *ptrB)
 }
 
 // 13 - lister les emprunts de la personne
+// Nom fonction : listeEmpruntPers
+// Description : Lister les emprunts en cours d'une personne
+// Entrée : pointeur vers une bibliothèque et chaine de caractère contenant le nom de l'emprunteur souhaité
+// Sortie : 
 void listeEmpruntPers (const T_Bibliotheque *ptrB, char emprunteur[])
 {
     int compteur = 0;
@@ -347,6 +360,10 @@ void listeEmpruntPers (const T_Bibliotheque *ptrB, char emprunteur[])
 }
 
 // 14 - lister le dernier livre emprunté
+// Nom fonction :  dernierLivreEmprunt
+// Description : Fonction qui affiche le dernier livre emprunté dans la bibliothèque
+// Entrée : Pointeur vers une bibliothèque
+// Sortie : 
 void dernierLivreEmprunt(const T_Bibliotheque *ptrB)
 {
     int position = 0;
@@ -372,6 +389,10 @@ void dernierLivreEmprunt(const T_Bibliotheque *ptrB)
 }
 
 // 15 - lister le dernier emprunt d'un livre en particulier
+// Nom fonction : dernierEmprunt
+// Description : Fonction affiche la dernière fois qu'un livre a été emprunté
+// Entrée : Pointeur vers une bibliothèque et position du livre recherché
+// Sortie : 
 void dernierEmprunt (const T_Bibliotheque *ptrB, int position)
 {
     {
@@ -391,10 +412,10 @@ void dernierEmprunt (const T_Bibliotheque *ptrB, int position)
 ///////////////////////////////////         Fonction Externe utilisé dans le TP            ////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Fonction formaterTexte
-//Entrée : texte à formater
-//Sortie : 1 lettre en majuscule et le reste en minuscule
-//Utilité : Permet ici d'enlever les majuscules en milieu de mot qui peut gener si on cherche le livre
+// Nom fonction : formaterTexte
+// Description : Permet ici d'enlever les majuscules en milieu de mot qui peut gener si on cherche le livre et mettre la premiere lettre en majuscule
+// Entrée : texte à formater
+// Sortie :
 void formaterTexte(Tchaine recherche)
 {
     int i = 1;
@@ -412,7 +433,10 @@ void formaterTexte(Tchaine recherche)
     }
 }
 
-//Fonction rechercherCode
+// Nom fonction : rechercherCode
+// Description : Permet de rechercher la position d'un livre dans la bibliothèque avec son code
+// Entrée : pointeur vers une bibliothèque et code du livre recherché
+// Sortie : renvoie la position du livre dans la bibliothèque
 int rechercherCode(const T_Bibliotheque *ptrB, const T_Code code)
 {
     int i = 0;
