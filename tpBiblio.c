@@ -48,9 +48,9 @@ int nombreLivresEmpruntes = 0;
 char nomEmprunteur[50];
 init( &B );
 
-#ifndef _DEBUG_
+#ifndef DEBUG
 	chargement(&B);
-#endif
+#endif 
 
 do
 {
@@ -353,7 +353,7 @@ switch(chx)
 
 }while(chx!=0);
 
-#ifndef _DEBUG_
+#ifndef DEBUG
 	sauvegarde(&B);
 #endif
 
