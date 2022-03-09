@@ -31,10 +31,7 @@ printf("\n  0 - QUITTER");
 printf("\n Votre choix : ");
 scanf("%d[^\n]",&choix);getchar();
 return choix;
-
-
 }
-
 
 
 int main()
@@ -48,9 +45,7 @@ int nombreLivresEmpruntes = 0;
 char nomEmprunteur[50];
 init( &B );
 
-#ifndef _DEBUG_
-	chargement(&B);
-#endif
+chargement(&B);
 
 do
 {
@@ -353,9 +348,7 @@ switch(chx)
 
 }while(chx!=0);
 
-#ifndef _DEBUG_
-	sauvegarde(&B);
-#endif
+sauvegarde(&B);
 
 return 0;
 
