@@ -3,7 +3,6 @@
 *.DStore
 
 **/*.dat
-**/*.txt
 **/*.log
 .vscode/configurationCache.log
 .vscode/dryrun.log
