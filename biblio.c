@@ -51,6 +51,10 @@ void chargement(T_Bibliotheque *ptrB)
 }
 
 // 1 - ajouter un nouveau livre dans la bibliotheque
+//Fonction ajouterLivre
+//Entrée : Pointeur vers une bibliothèque
+//Sortie : 
+//Utilité : Permet d'ajouter un livre dans la bibliothèque selectionné précedemment
 int ajouterLivre(T_Bibliotheque  *ptrB)
 {
     if (ptrB->nbLivres < CAPACITE_BIBLIO)
@@ -97,6 +101,10 @@ int ajouterLivre(T_Bibliotheque  *ptrB)
 }
 
 // 2 - afficher tous les livres de la bibliotheque
+//Fonction afficherBibliotheque
+//Entrée : Pointeur vers une bibliothèque
+//Sortie : 
+//Utilité : Permet d'afficher les informations de tous les livres dans la bibliothèque selectionné précedemment
 int  afficherBibliotheque(const T_Bibliotheque  *ptrB)
 {
     if (ptrB->nbLivres != 0)
@@ -113,6 +121,10 @@ int  afficherBibliotheque(const T_Bibliotheque  *ptrB)
 }
 
 // 3 - rechercher un livre (par son titre)
+//Fonction rechercherLivre
+//Entrée : Pointeur vers une bibliothèque et Titre qui est demandé
+//Sortie : Le compteur donc le rang où le livre se situe
+//Utilité : Permet de rechercher l'emplacement(le rang) du livre dans la bibliothèque selectionné précedemment.
 int rechercherLivre(const T_Bibliotheque *ptrB, const T_Titre recherche)
 {
     int compteur = 0;
@@ -128,6 +140,10 @@ int rechercherLivre(const T_Bibliotheque *ptrB, const T_Titre recherche)
 }
 
 // 4 - rechercher et afficher tous les livres d'un auteur
+//Fonction rechercherAuteur
+//Entrée : Pointeur vers une bibliothèque et Auteur qui est demandé
+//Sortie : Le compteur donc le rang où le livre se situe
+//Utilité : Permet de rechercher tous les livres dans la bibliothèque selectionné précedemment écris par cet auteur.
 int rechercherAuteur(const T_Bibliotheque *ptrB, const T_Aut recherche)
 {
     int compteur = 0;
@@ -147,6 +163,10 @@ int rechercherAuteur(const T_Bibliotheque *ptrB, const T_Aut recherche)
 }
 
 // 5 - supprimer un livre de la bibliotheque
+//Fonction supprimerrLivre
+//Entrée : Pointeur vers une bibliothèque et Code qui est demandé.
+//Sortie : Le compteur donc le rang où le livre se situe ou -1 si le livre n'est pas dans la bibliothèque
+//Utilité : Permet de supprimer le livre dans la bibliothèque selectionné précedemment grâce au code fourni.
 int supprimerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
 {
     for (int i = 0; i < ptrB->nbLivres; i++)
@@ -168,6 +188,10 @@ int supprimerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
 // TP 8 Partie n°2
 
 // 6 - emprunter un livre de la bibliotheque
+//Fonction emprunterLivre
+//Entrée : Pointeur vers une bibliothèque , Nom de l'emprunteur qui est demandé et la position qui est donné grâce à la focntion rechercherLivre()
+//Sortie : 
+//Utilité : Permet de modifier le nom de l'emprunteur d'un livre dans la bibliothèque selectionné précedemment.
 int emprunterLivre(T_Bibliotheque *ptrB, char NomEmprunteur[], int position)
 {
 
@@ -194,6 +218,10 @@ int emprunterLivre(T_Bibliotheque *ptrB, char NomEmprunteur[], int position)
 }
 
 // 7 - restituer/rendre un livre de la bibliotheque
+//Fonction restituerLivre
+//Entrée : Pointeur vers une bibliothèque et Code qui est demandé
+//Sortie : Le compteur donc le rang où le livre se situe où -1 si il n'est pas dans cette bibliothèque à cette instant
+//Utilité : Permet de restituer le livre donc siupprimer le nom de l'emprunteur de ce livre dans la bibliothèque selectionné précedemment.
 int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
 {
     ptrB->nbLivresDispo++;
@@ -214,6 +242,10 @@ int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
 }
 
 // 8 - trier les livres (par titre)
+//Fonction trieTitre
+//Entrée : Pointeur vers une bibliothèque
+//Sortie : 
+//Utilité : Permet de trier la bibliothèque avec les titres des livres.
 void trieTitre(T_Bibliotheque *ptrB)
 {
     T_livre intermediaire;
@@ -233,6 +265,10 @@ void trieTitre(T_Bibliotheque *ptrB)
 
 // 9 - trier les livres (par auteur)
 void trieAuteur(T_Bibliotheque *ptrB)
+//Fonction trieAuteur
+//Entrée : Pointeur vers une bibliothèque
+//Sortie : 
+//Utilité : Permet de trier la bibliothèque avec les auteurs des livres.
 {
     T_livre intermediaire;
     for (int i = 0; i < ptrB->nbLivres; i++)
@@ -250,6 +286,10 @@ void trieAuteur(T_Bibliotheque *ptrB)
 }
 
 // 10 - trier les livres (par annee)
+//Fonction trieAnnee
+//Entrée : Pointeur vers une bibliothèque
+//Sortie : 
+//Utilité : Permet de trier la bibliothèque avec l'année de création des livres.
 void trieAnnee(T_Bibliotheque *ptrB)
 {
     T_livre intermediaire;
