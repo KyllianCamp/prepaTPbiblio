@@ -20,7 +20,7 @@ Commentaires pertinents :
     modifier tout les fonctions et cases utilisant cette structure .
     Nous avons donc laissé le nombre d'emprunteur d'un livre à 1.
 
-    Nous avons réalisé une partie de la Partie 4 du TP, les 5 premières fonctions sont opérationnels et les méthodes de tris aussi.
+    Nous avons réalisé une partie de la Partie 4 du TP, les 5 premières fonctions sont opérationnels et nous avons tenté di'utiliser les fichier pour les méthodes de tris sans succès.
     Pour ajouter un livre, on stock les données du livre en mémoire pour les écrires dans un fichier externe. Cela permet de n'avoir
     qu'un seul livre chargé en mémoire.
     Pour la fonction supprimer un livre, nous utilisons un fichier temporaire qui contiendra les livres qui ne doivent pas être supprimés.
