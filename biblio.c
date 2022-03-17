@@ -40,12 +40,28 @@ void sauvegarde(T_Bibliotheque *ptrB)
     if (fic!=NULL)
     {
     //fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream)
+        fwrite( &(ptrB->etagere[0]),sizeof(T_livre),1,fic);
+        fclose(fic);
+        puts("SAUVEGARDE REUSSIE ..............");
+        }
+        else puts("ECHEC DE SAUVEGARDE  !!!!!  ");
+}
+
+void sauvegardeTri(T_Bibliotheque *ptrB)
+{
+    FILE *fic=NULL; //le type FILE
+    fic=fopen("baseLivresTri","a"); // w = le mode = write avec ECRASEMENT
+    //fopen renvoie NULL si probleme (disque plein, disque non accessible ...
+    if (fic!=NULL)
+    {
+    //fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream)
         fwrite(  &(ptrB->etagere[0]),sizeof(T_livre),1,fic);
         fclose(fic);
         puts("SAUVEGARDE REUSSIE ..............");
         }
         else puts("ECHEC DE SAUVEGARDE  !!!!!  ");
 }
+
 
 void chargement(T_Bibliotheque *ptrB)
 {
@@ -101,6 +117,7 @@ int ajouterLivre(T_Bibliotheque  *ptrB)
         fgets(ptrB->etagere[0].editeur, MAX, stdin);
         fflush(stdin);
         formaterTexte(ptrB->etagere[0].editeur);
+        ptrB->etagere[0].editeur[101]='!';
 
         printf("Saisissez le nombre d'exemplaire que vous avez : \n");
         scanf("%d", &ptrB->etagere[0].QuantiteExemplaire);
@@ -151,6 +168,37 @@ int  afficherBibliotheque(T_Bibliotheque  *ptrB)
     return 0;
 }
 
+int  afficherBibliothequeTri(T_Bibliotheque  *ptrB)
+{
+    // printf("commencement \n");
+    // FILE *fic=NULL; //le type FILE
+    // fic=fopen("nbrLivre","r"); // r = le mode read
+    // int val[1];
+    // fread(val,sizeof(int),1,fic);
+    // fclose(fic);
+    if (ptrB->nbLivres > 0)
+    {
+        FILE *fic=NULL; //le type FILE
+        fic=fopen("baseLivresTri","r"); // r = le mode read
+        if (fic!=NULL)
+        {
+            printf("Les livres disponibles sont : \n");
+            while(!feof(fic))
+            {
+                int retour = fread(&(ptrB->etagere[0]),sizeof(T_livre),1,fic);
+                if (retour == 1)
+                {
+                    afficherLivre(&ptrB->etagere[0]);
+                }
+            }
+            
+        }
+        printf("fin \n");
+        fclose(fic);
+        return 1;
+    }
+    return 0;
+}
 // 3 - rechercher un livre (par son titre)
 //Fonction rechercherLivre
 //Entrée : Pointeur vers une bibliothèque et Titre qui est demandé
@@ -297,22 +345,108 @@ int restituerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
 //Entrée : Pointeur vers une bibliothèque
 //Sortie : 
 //Utilité : Permet de trier la bibliothèque avec les titres des livres.
+// void trieTitre(T_Bibliotheque *ptrB)
+// {
+//     T_livre intermediaire;
+//     for (int i = 0; i < ptrB->nbLivres; i++)
+//     {
+//         for (int y = (ptrB->nbLivres)-1; y > 0 ; y--)
+//         {
+//             if (strcmp(ptrB->etagere[y].titre, ptrB->etagere[y-1].titre) < 0)
+//             {
+//                 intermediaire = ptrB->etagere[y];
+//                 ptrB->etagere[y]=ptrB->etagere[y-1];
+//                 ptrB->etagere[y-1]=intermediaire;
+//             }
+//         }
+//     }
+// }
+
+// void trieTitre(T_Bibliotheque *ptrB)
+// {
+//     // printf("commencement \n");
+//     // FILE *fic=NULL; //le type FILE
+//     // fic=fopen("nbrLivre","r"); // r = le mode read
+//     // int val[1];
+//     // fread(val,sizeof(int),1,fic);
+//     // fclose(fic);
+    
+//     char ch[2],ch2[3000];
+//     int c=0;
+//     if (ptrB->nbLivres > 0)
+//     {
+//         FILE *fic=NULL; //le type FILE
+//         fic=fopen("baseLivres","r"); // r = le mode read
+//         if (fic!=NULL)
+//         {
+//             while((ch[0]=fgetc(fic))!=EOF)
+//             {
+//                 if(c==0)
+//                 {
+//                     printf("%c \n", ch[0]);
+//                     strcat(ch2,ch);
+//                     c++;
+//                 }
+//                 else
+//                 {
+
+//                     if(ch[0]=='\n')
+//                     {
+//                         printf("\n %c",ch2[1]);
+//                         fflush(stdin);
+//                         fclose(fic);
+//                     }
+//                     strcat(ch2,ch);
+//                     printf("%c\n", ch[0]);
+//                     c++;
+//                 }
+//             }
+//         }
+//         printf("fin \n");
+//         fclose(fic);
+//     }
+// }
+
+
 void trieTitre(T_Bibliotheque *ptrB)
 {
-    T_livre intermediaire;
-    for (int i = 0; i < ptrB->nbLivres; i++)
+    // printf("commencement \n");
+    // FILE *fic=NULL; //le type FILE
+    // fic=fopen("nbrLivre","r"); // r = le mode read
+    // int val[1];
+    // fread(val,sizeof(int),1,fic);
+    // fclose(fic);
+    
+    char ch,ch2[3000],ch3[3000];
+    int compteur=0;
+    if (ptrB->nbLivres > 0)
     {
-        for (int y = (ptrB->nbLivres)-1; y > 0 ; y--)
+        FILE *fic=NULL; //le type FILE
+        fic=fopen("baseLivres","r"); // r = le mode read
+        if (fic!=NULL)
         {
-            if (strcmp(ptrB->etagere[y].titre, ptrB->etagere[y-1].titre) < 0)
+            while((ch=fgetc(fic))!=EOF)
             {
-                intermediaire = ptrB->etagere[y];
-                ptrB->etagere[y]=ptrB->etagere[y-1];
-                ptrB->etagere[y-1]=intermediaire;
+                fgets(ch2 ,30000 ,fic);
+                fflush(stdin);
+                while (ch=fgetc(fic)=='!')
+                {
+                    if(strcmp(ch2, ch3) < 0)
+                    {
+                        compteur++;
+                    }
+                    fgets(ch3 ,30000 ,fic);
+                    fflush(stdin);
+                }
+                
+
             }
         }
+        printf("fin \n");
+        fclose(fic);
     }
 }
+
 
 // 9 - trier les livres (par auteur)
 void trieAuteur(T_Bibliotheque *ptrB)

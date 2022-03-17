@@ -45,4 +45,8 @@ void nbrLivre(T_Bibliotheque *ptrB);
 void chargementNbrLivre (T_Bibliotheque *ptrB);
 
 void formaterTexte(Tchaine recherche);
+
+void sauvegardeTri(T_Bibliotheque *ptrB);
+int  afficherBibliothequeTri(T_Bibliotheque  *ptrB);
+
 #endif
