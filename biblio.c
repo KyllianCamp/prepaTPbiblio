@@ -451,7 +451,7 @@ void trieTitre(T_Bibliotheque *ptrB)
                     fseek(fic,compteur*188, SEEK_SET);
                     fgets(ptrB->etagere[0].titre, MAX_TITRE, stdin);
                     fflush(stdin);
-                    printf("a\n");
+                    
                     fseek(fic,86+compteur*188, SEEK_SET);
                     fgets(ptrB->etagere[0].code, MAX_CODE, stdin);
                     fflush(stdin);
