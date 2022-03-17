@@ -120,9 +120,9 @@ switch(chx)
 				printf("Saisissez le code du livre que vous souhaitez supprimer : \n");
 				fgets(codeRecherche, K_MaxCode, stdin);
 				reponse = supprimerLivre(&B, codeRecherche);
+				nbrLivre(&B);
 				if (reponse >= 0)
 				{
-					printf("Le livre se trouvait à la position %d \n", reponse);
 					printf("Supression avec succès \n");
 				}
 				else
