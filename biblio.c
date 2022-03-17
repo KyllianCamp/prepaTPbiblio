@@ -419,28 +419,57 @@ void trieTitre(T_Bibliotheque *ptrB)
     // fclose(fic);
     
     char ch,ch2[3000],ch3[3000];
-    int compteur=0;
+    int compteur=0 , beta=0;
     if (ptrB->nbLivres > 0)
     {
         FILE *fic=NULL; //le type FILE
         fic=fopen("baseLivres","r"); // r = le mode read
         if (fic!=NULL)
         {
-            while((ch=fgetc(fic))!=EOF)
-            {
-                fgets(ch2 ,30000 ,fic);
-                fflush(stdin);
-                while (ch=fgetc(fic)=='!')
+             while (fgets(ch2,3000, fic) != NULL) // On lit le fichier tant qu'on ne reçoit pas d'erreur (NULL)
+                        {
+                            printf("%s", ch2); // On affiche la chaîne qu'on vient de lire
+                            fflush(stdin);
+                        }
+            while (beta < 1)
+            { 
+                for(int i=0;i<2 ;i++)
                 {
-                    if(strcmp(ch2, ch3) < 0)
-                    {
-                        compteur++;
-                    }
+                    fseek(fic,compteur*188, SEEK_SET);
                     fgets(ch3 ,30000 ,fic);
+                    
                     fflush(stdin);
+                    if(strcmp(ch2, ch3) < 0)
+                        {
+                            strcpy(ch3,ch2);
+                            compteur++;
+                        }
+                        fgets(ch3 ,30000 ,fic);
+                        fflush(stdin);
+                    
                 }
-                
+                    fseek(fic,compteur*188, SEEK_SET);
+                    fgets(ptrB->etagere[0].titre, MAX_TITRE, stdin);
+                    fflush(stdin);
+                    printf("a\n");
+                    fseek(fic,86+compteur*188, SEEK_SET);
+                    fgets(ptrB->etagere[0].code, MAX_CODE, stdin);
+                    fflush(stdin);
 
+                    fseek(fic,60+compteur*188, SEEK_SET);
+                    fgets(ptrB->etagere[0].auteur, MAX, stdin);
+                    fflush(stdin);
+
+                    scanf("%d", &ptrB->etagere[0].annee);
+                    fflush(stdin);
+
+                    fgets(ptrB->etagere[0].editeur, MAX, stdin);
+                    fflush(stdin);
+
+                    formaterTexte(ptrB->etagere[0].editeur);
+                    ptrB->etagere[0].editeur[101]='!' ;
+                    beta++;
+                    sauvegardeTri(&ptrB);
             }
         }
         printf("fin \n");
