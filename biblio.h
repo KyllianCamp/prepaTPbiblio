@@ -22,7 +22,7 @@ typedef struct
 //prototypes
 void init (T_Bibliotheque *ptrB);
 int ajouterLivre(T_Bibliotheque  *ptrB);
-int afficherBibliotheque(const T_Bibliotheque  *ptrB);
+int afficherBibliotheque(T_Bibliotheque  *ptrB);
 int rechercherLivre(const T_Bibliotheque *ptrB, const T_Titre recherche);
 int rechercherAuteur(const T_Bibliotheque *ptrB, const T_Aut recherche);
 int supprimerLivre(T_Bibliotheque *ptrB, const T_Code recherche);
@@ -41,6 +41,8 @@ void dernierEmprunt (const T_Bibliotheque *ptrB, int reponse);
 
 void sauvegarde(T_Bibliotheque *ptrB);
 void chargement(T_Bibliotheque *ptrB);
+void nbrLivre(T_Bibliotheque *ptrB);
+void chargementNbrLivre (T_Bibliotheque *ptrB);
 
 void formaterTexte(Tchaine recherche);
 #endif

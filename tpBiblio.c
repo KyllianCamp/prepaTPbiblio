@@ -23,9 +23,9 @@ printf("\n 11 - lister les livres disponibles ");
 printf("\n 12 - lister les emprunts en retard "); //on suppose qu'un emprunt dure 7 jours.
 printf("\n 13 - lister les emprunts de la personne "); 
 printf("\n 14 - lister le dernier livre emprunté");
-printf("\n 15 - lister le dernier emprunt d'un livre en particulier");
-printf("\n 16 - nombre de fois qu'un livre a été emprunté");
-printf("\n 17 - ajouter du stock aux livres présents");
+printf("\n 15 - lister le dernier emprunt d'un livre en particulier"); 
+printf("\n 16 - nombre de fois qu'un livre a été emprunté"); 
+printf("\n 17 - ajouter du stock aux livres présents"); 
 
 printf("\n  0 - QUITTER");
 printf("\n Votre choix : ");
@@ -46,11 +46,12 @@ T_Aut auteurRecherche;
 T_Code codeRecherche;
 int nombreLivresEmpruntes = 0;
 char nomEmprunteur[50];
-init( &B );
+// init( &B );
+chargementNbrLivre(&B);
 
-#ifndef DEBUG
+#ifndef _DEBUG_
 	chargement(&B);
-#endif 
+#endif
 
 do
 {
@@ -60,7 +61,11 @@ switch(chx)
 	case  1 : //ajouter un nouveau livre dans la bibliotheque
 			reponse = ajouterLivre(   &B  );
 			if (reponse==1)
+			{
 				printf(" ajout reussi !!");
+				sauvegarde(&B);
+				nbrLivre(&B);
+			}
 			else
 				printf("impossible d ajouter (bibliotheque pleine)");
 			break;
@@ -72,7 +77,7 @@ switch(chx)
 			break;	
 	
 	case 3 : //rechercher un livre (par son titre)
-			if (B.nbLivres != 0)
+			if (B.nbLivres > 0)
 			{
 				printf("Saisissez le titre que vous cherchez : ");
 				fgets(titreRecherche, K_MaxTit, stdin);
@@ -353,7 +358,7 @@ switch(chx)
 
 }while(chx!=0);
 
-#ifndef DEBUG
+#ifndef _DEBUG_
 	sauvegarde(&B);
 #endif
 
