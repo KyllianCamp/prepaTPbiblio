@@ -127,7 +127,7 @@ int ajouterLivre(T_Bibliotheque  *ptrB)
         ptrB->etagere[0].NbEmprunt = 0;
         printf("combien de fois \n");
         ptrB->nbLivres++;
-        // ptrB->nbLivresDispo++;
+        ptrB->nbLivresDispo++;
         return 1;
 }
 
@@ -138,12 +138,6 @@ int ajouterLivre(T_Bibliotheque  *ptrB)
 //Utilité : Permet d'afficher les informations de tous les livres dans la bibliothèque selectionné précedemment
 int  afficherBibliotheque(T_Bibliotheque  *ptrB)
 {
-    // printf("commencement \n");
-    // FILE *fic=NULL; //le type FILE
-    // fic=fopen("nbrLivre","r"); // r = le mode read
-    // int val[1];
-    // fread(val,sizeof(int),1,fic);
-    // fclose(fic);
     if (ptrB->nbLivres > 0)
     {
         FILE *fic=NULL; //le type FILE
@@ -226,16 +220,6 @@ int rechercherLivre(const T_Bibliotheque *ptrB, const T_Titre recherche)
     }
     fclose(fic);
     return compteur;
-    // int compteur = 0;
-    // for (int i = 0; i < ptrB->nbLivres; i++)
-    // {     
-    //     if (strcmp(ptrB->etagere[i].titre, recherche)==0)
-    //     {
-    //         compteur++;
-    //         printf("Ce titre se trouve à la place %d dans l'étagère \n", i+1);
-    //     }  
-    // }
-    // return compteur;
 }
 
 // 4 - rechercher et afficher tous les livres d'un auteur
@@ -245,19 +229,24 @@ int rechercherLivre(const T_Bibliotheque *ptrB, const T_Titre recherche)
 //Utilité : Permet de rechercher tous les livres dans la bibliothèque selectionné précedemment écris par cet auteur.
 int rechercherAuteur(const T_Bibliotheque *ptrB, const T_Aut recherche)
 {
+    FILE *fic=NULL; //le type FILE
+    fic=fopen("baseLivres","r"); // r = le mode read
     int compteur = 0;
-    for (int i = 0; i < ptrB->nbLivres; i++)
+    int i = 0;
+    if (fic!=NULL)
     {
-        if (strcmp(ptrB->etagere[i].auteur, recherche)==0)
+        while (!feof(fic))
         {
-            compteur++;
-            if (compteur==1)
+            i++;
+            int retour = fread(&(ptrB->etagere[0]),sizeof(T_livre),1,fic);
+            if (strcmp(ptrB->etagere[0].auteur, recherche)==0 && retour ==1)
             {
-                printf("les livres disponibles de l'auteur %s sont : \n", recherche);
+                compteur++;
+                printf("Ce titre se trouve à la place %d dans l'étagère \n", i);
             }
-            printf("-%s \n", ptrB->etagere[i].titre);
         }
     }
+    fclose(fic);
     return compteur;
 }
 
@@ -268,17 +257,29 @@ int rechercherAuteur(const T_Bibliotheque *ptrB, const T_Aut recherche)
 //Utilité : Permet de supprimer le livre dans la bibliothèque selectionné précedemment grâce au code fourni.
 int supprimerLivre(T_Bibliotheque *ptrB, const T_Code recherche)
 {
-    for (int i = 0; i < ptrB->nbLivres; i++)
+    FILE *fic=NULL; //le type FILE
+    fic=fopen("baseLivres","r"); // r = le mode read
+    if (fic!=NULL)
     {
-        if (strcmp(ptrB->etagere[i].code, recherche)==0)
+        FILE *file = NULL;
+        file=fopen("baseLivresTempo","a");
+        if (file!=NULL)
         {
-            for (int y = i; y < ptrB->nbLivres; y++)
+            while (!feof(fic))
             {
-                ptrB->etagere[y]= ptrB->etagere[y+1];
+                int retour = fread(&ptrB->etagere[0],sizeof(T_livre),1,fic);
+                if (strcmp(ptrB->etagere[0].code,recherche)!=0 && retour == 1)
+                {
+                    fwrite(&(ptrB->etagere[0]),sizeof(T_livre),1,file);
+                }
             }
+            fclose(file);
+        }
+        fclose(fic);
+        remove("baseLivres");
+        rename("baseLivresTempo","baseLivres");
         ptrB->nbLivres--;
-        return i;
-        } 
+        return 1;
     }
     return -1;
 }
