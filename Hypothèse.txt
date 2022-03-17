@@ -1,0 +1,22 @@
+Commentaires pertinents :
+
+    Nous avons ajoutés plusieurs cases et fonctions complémentaires qui permettent d'approfondir l'utilisation de la bibliothèques
+    Donc de la case 13 à 17. Nous avons soumis des hypothèses pour ainsii modifier les strcutures données en cours . 
+    
+    La structure T_livre a été modifié .
+    Nous avons ajoutés le nombre d'exemplaire à chaque livre permettant ainsi emprunter plusieurs fois le même livre.
+    Et le nombre d'emprunt du livre .
+    Ce qui nous a poussés a créer de nouvelles fonctions et des cases
+    qui sont ajouter_stock permettant d'augmenter la quantité d'exemplaire
+
+    Fonction emprunterLivre(...) 
+    On a utilisé une structure time_t et donc afficher la date en nombre pour
+    simplifier la tache sur les retard.
+    On a remarqué qu'il serait plus simple d'additionner les valeurs des jours mois années des dates d'emprunt et de rendu
+    Puis les soustraires ensemble ainsi si le résultat est négatif alors l'emprunteur sera en retard ete le résultat sera le nombre de jour de retard.
+
+    Ces nouveaux fontions ont mis en évidence de nouveaux problème car Un livre peut être emprunter par plusieurs personnes
+    Et donc on aurait du modifier la structure de l'emprunteur et le mettre comme un tableau .Chose qui nous aurait obliger à
+    modifier tout les fonctions et cases utilisant cette structure .
+    Nous avons donc laissé le nombre d'emprunteur d'un livre à 1.
+
